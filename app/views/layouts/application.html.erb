@@ -12,9 +12,15 @@
 
   <body>
     <div class="box">
-      <%= render 'layouts/navigation' %>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
+      <div class="somerow header">
+        <%= render 'layouts/navigation' %>
+      </div>
+      <div class="somerow content">
+        <%= yield %>
+      </div>
+      <div class="somerow footer">
+        <%= render 'layouts/footer' %>
+      </div>
     </div>
   </body>
 </html>

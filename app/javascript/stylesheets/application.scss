@@ -15,11 +15,6 @@ body {
 
 .box .somerow.header {
   flex: 0 1 auto;
-  /* The above is shorthand for:
-  flex-grow: 0,
-  flex-shrink: 1,
-  flex-basis: auto
-  */
 }
 
 .box .somerow.content {
@@ -30,14 +25,13 @@ body {
   flex: 0 1 40px;
 }
 
-.navbar {
-  height: 64px;
-}
 
 .index-container {
-  padding-top: 50px;
   background: rgb(255,255,255);
   background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(227,235,255,1) 42%, rgba(209,221,255,1) 65%, rgba(110,147,255,1) 100%);
   height: 100%;
-  gap: 400px;
+}
+
+.boards-index-container {
+  height: 100%;
 }
