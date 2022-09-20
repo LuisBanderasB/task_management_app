@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+boards = Board.create([
+  {name: 'Task Management App', visibility: 'public'},
+  {name: 'ToDo App', visibility: 'public'},
+  {name: 'Musirockstars', visibility: 'public'},
+  {name: 'Photo_app', visibility: 'public'}
+])
