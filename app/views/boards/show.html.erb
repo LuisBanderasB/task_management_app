@@ -1,42 +1,20 @@
 <div class="container mt-5">
   <h2><%= @board.name %></h2>
 
-  <div class="container text-center">
+  <div class="container mt-4 text-center">
     <div class="row row-cols-auto">
       <% @lists.each do |list| %>
-        <div class="col mt-4">
-          <div class="card text-center py-2">
-            <h5 class="card-title">
-              <%= list.name %>
-            </h5>
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action active draggable-element" aria-current="true">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small>3 days ago</small>
-                </div>
-                <p class="mb-1">Some placeholder content in a paragraph.</p>
-                <small>And some small print.</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Some placeholder content in a paragraph.</p>
-                <small class="text-muted">And some muted small print.</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Some placeholder content in a paragraph.</p>
-                <small class="text-muted">And some muted small print.</small>
-              </a>
-            </div>
-          </div>
-        </div>
+        <ul class="kanban-col">
+          <li class="kanban-col-name"><%= list.name %></li>
+            <% list.tasks.each do |task| %>
+              <li class="kanban-col-item" >
+                <%= task.title %>
+              </li>
+            <% end %>
+            <li class="kanban-col-item bg-secondary text-white" >
+              Add a new task
+            </li>
+        </ul>
       <% end %>
     </div>
   </div>
