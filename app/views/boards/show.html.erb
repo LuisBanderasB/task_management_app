@@ -11,11 +11,15 @@
                 <%= task.title %>
               </li>
             <% end %>
-            <li class="kanban-col-item bg-secondary text-white" >
+            <div class="kanban-col-item bg-secondary text-white" >
               Add a new task
-            </li>
+            </div>
+            <a href="#" id="show_whatever">Show Whatever</a>
+            <div id="whatever" class="hidden kanban-col-item bg-secondary text-white">hi</div>
         </ul>
       <% end %>
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'custom' %>
