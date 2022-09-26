@@ -4,7 +4,7 @@
   <div class="container mt-4 text-center">
     <div class="row row-cols-auto">
       <% @lists.each do |list| %>
-        <ul class="kanban-col">
+        <ul class="list kanban-col" id="single">
           <li class="kanban-col-name"><%= list.name %></li>
             <% list.tasks.each do |task| %>
               <li class="kanban-col-item" >
@@ -35,4 +35,4 @@
   </div>
 </div>
 
-<%= javascript_pack_tag 'custom' %>
+<%= javascript_pack_tag 'dragula' %>
