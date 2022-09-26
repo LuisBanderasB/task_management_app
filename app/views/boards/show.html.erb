@@ -11,11 +11,24 @@
                 <%= task.title %>
               </li>
             <% end %>
-            <div class="kanban-col-item bg-secondary text-white" >
-              Add a new task
+            <div class="hidden kanban-col-item bg-secondary" id="show_whatever" >
+              <a href="#" id="show_whatever" class="text-white text-decoration-none">
+                Add a new task
+              </a>
             </div>
-            <a href="#" id="show_whatever">Show Whatever</a>
-            <div id="whatever" class="hidden kanban-col-item bg-secondary text-white">hi</div>
+            <div class="hidden kanban-col-item bg-secondary text-white" style="display: none;">
+              <%= form_with scope: :task, url: tasks_path, local: true do |f| %>
+                <p> 
+                  <%= f.text_field :title, placeholder: "Introduce a title for this task"%>
+                </p>
+                <p>
+                  <%= f.text_field :list_id, type: "hidden", value: list.id %>
+                </p>
+                <p>
+                  <%= f.submit %> 
+                </p>
+              <% end %>
+            </div>
         </ul>
       <% end %>
     </div>
