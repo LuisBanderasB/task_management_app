@@ -1,38 +1,23 @@
 <div class="container mt-5">
   <h2><%= @board.name %></h2>
 
-  <div class="container mt-4 text-center">
-    <div class="row row-cols-auto">
+  <div class="container mt-4">
+    <div class="row row-cols-auto d-flex gap-4">
       <% @lists.each do |list| %>
-        <ul class="list kanban-col" id="single">
-          <li class="kanban-col-name"><%= list.name %></li>
-            <% list.tasks.each do |task| %>
-              <li class="kanban-col-item" >
-                <%= task.title %>
-              </li>
-            <% end %>
-            <div class="hidden kanban-col-item bg-secondary" id="show_whatever" >
-              <a href="#" id="show_whatever" class="text-white text-decoration-none">
-                Add a new task
-              </a>
-            </div>
-            <div class="hidden kanban-col-item bg-secondary text-white" style="display: none;">
-              <%= form_with scope: :task, url: tasks_path, local: true do |f| %>
-                <p> 
-                  <%= f.text_field :title, placeholder: "Introduce a title for this task"%>
-                </p>
-                <p>
-                  <%= f.text_field :list_id, type: "hidden", value: list.id %>
-                </p>
-                <p>
-                  <%= f.submit %> 
-                </p>
-              <% end %>
-            </div>
-        </ul>
+        <div class="bg-light rounded" style="width: 18rem;">
+          <h4><%= list.name %></h4>
+          <ul class="list-group">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+            <li class="list-group-item">A fourth item</li>
+            <li class="list-group-item">And a fifth one</li>
+          </ul>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
 
 <%= javascript_pack_tag 'dragula' %>
+<%= javascript_pack_tag 'custom' %>

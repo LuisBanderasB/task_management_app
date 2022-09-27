@@ -1,4 +1,4 @@
-var lists = $('.kanban-col').toArray()
+var lists = $('.list').toArray()
 require(["dragula"], function(dragula){
   dragula(lists)
 })
