@@ -6,7 +6,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @lists = @board.lists
+    @lists = BoardPresenter.new(@board).lists
   end
 
   def create
@@ -27,5 +27,7 @@ class BoardsController < ApplicationController
 
   def set_board
     @board = Board.find(params[:id])
+  rescue ActiveRecord::RecordNotFound => e
+    flash[:error] = e 
   end
 end
