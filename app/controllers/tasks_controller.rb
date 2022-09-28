@@ -2,9 +2,9 @@ class TasksController < ApplicationController
   def create
       @task = Task.new(task_params)
       if @task.save
-        flash[:notice] = "Board was created successfully." 
+        redirect_to board_path(task_params[:list_id])
       else
-        render 'index'
+        flash[:notice] = "Something went wrong." 
       end
   end
 

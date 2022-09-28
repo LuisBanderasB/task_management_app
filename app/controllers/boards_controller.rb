@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show]
+  before_action :set_board, only: [:show, :destroy]
 
   def index
     @boards = Board.all
@@ -15,9 +15,17 @@ class BoardsController < ApplicationController
       flash[:notice] = "Board was created successfully." 
       redirect_to @board
     else
-      render 'index'
+      flash[:danger] = "You need a name with more than 6 characters." 
+      redirect_to boards_path
     end
   end
+
+  def destroy
+    @board.destroy
+    flash[:notice] = "Board was deleted succesfuly"
+    redirect_to boards_path
+  end
+
 
   private 
 

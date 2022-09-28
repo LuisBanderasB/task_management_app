@@ -1,0 +1,13 @@
+<div class="hidden kanban-col-item bg-secondary text-white" style="display: none;">
+  <%= form_with scope: :task, url: tasks_path, local: true do |f| %>
+    <p> 
+      <%= f.text_field :title, placeholder: "Introduce a title for this task"%>
+    </p>
+    <p>
+      <%= f.text_field :list_id, type: "hidden", value: list.id %>
+    </p>
+    <p>
+      <%= f.submit %> 
+    </p>
+  <% end %>
+</div>

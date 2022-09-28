@@ -5,6 +5,12 @@ html,
 body {
   height: 100%;
   margin: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .box {
@@ -101,4 +107,15 @@ body {
 
 .gu-transit {
   opacity: 0.2;
+}
+
+
+.list-group-item:hover{
+  cursor: pointer;
+}
+
+.add:hover{
+  cursor: pointer;
+  background-color:rgba(128,128,128,0.1);
+  color: black;
 }
