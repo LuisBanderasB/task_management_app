@@ -30,19 +30,7 @@
             </a>
           </div>
           <div class="hidden my-3" id="form_<%= list.id%>" style="display: none;">
-            <%= form_with scope: :task, url: tasks_path, local: true do |f| %>
-              <form>
-                <div class="mb-2">
-                  <%= f.text_field :title, placeholder: "Introduce a title for this task", class:"rounded-1 form-control h-16"%>
-                </div>
-                <div>
-                  <%= f.text_field :list_id, type: "hidden", value: list.id %>
-                </div>
-                <%= f.submit 'submit', class: 'btn btn-primary rounded-1'%>
-                <a href="#" class='btn btn-close rounded-1'>
-                </a>
-              </form>
-            <% end %>
+            <%= render(:partial => "lists/new", :locals => {:list => list})%>
           </div>
         </div>
       <% end %>
