@@ -1,0 +1,23 @@
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Update board</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <%= form_with model: @board, local: true do |f| %>
+        <form>
+          <div class="form-floating mb-3">
+            <%= f.text_field :name, class: "form-control"%>
+            <%= f.label :name %>
+          </div>
+          <div class="form-floating">
+            <%= f.select(:visibility, ["public", "private"], {}, { :class => 'form-select' }) %>
+            <%= f.label :visibility %><br/> 
+          </div>
+          <%= f.submit 'Update', class: "btn btn-primary" %> 
+        </form>
+      <% end %>
+    </div>
+  </div>
+</div>

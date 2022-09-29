@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  resources :boards, only: [:index, :show, :create, :destroy]
-  resources :tasks, only: [:create]
+  resources :boards, only: [:index, :show, :create, :destroy, :update]
+  resources :tasks, only: [:create, :update]
 end

@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :destroy]
+  before_action :set_board, only: [:show, :destroy, :update]
 
   def index
     @boards = Board.all
@@ -17,6 +17,16 @@ class BoardsController < ApplicationController
     else
       flash[:danger] = "You need a name with more than 6 characters." 
       redirect_to boards_path
+    end
+  end
+
+  def update
+    if @board.update(board_params)
+      flash[:notice] = "Board was updated successfully."
+      redirect_to @board
+    else
+      flash[:danger] = "Board needs a name larger than 6 characters."
+      redirect_to @board
     end
   end
 
