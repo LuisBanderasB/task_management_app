@@ -15,8 +15,11 @@
   <div class="container mt-4">
     <div class="row row-cols-auto d-flex gap-4">
       <% @lists.each do |list| %>
-        <%= render(:partial => "lists/show", :locals => {:list => list})%>
+        <div class="col bg-light rounded" style="width: 18rem;">
+          <%= render(:partial => "lists/show", :locals => {:list => list})%>
+        </div>
       <% end %>
+      <%= render(:partial => "lists/new", :locals => {:board => @board})%>
     </div>
   </div>
 </div>
