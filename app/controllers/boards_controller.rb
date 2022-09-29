@@ -44,8 +44,6 @@ class BoardsController < ApplicationController
   end
 
   def set_board
-    @board = Board.find(params[:id])
-  rescue ActiveRecord::RecordNotFound => e
-    flash[:error] = e 
+    @board = Board.find_by_id(params[:id])
   end
 end

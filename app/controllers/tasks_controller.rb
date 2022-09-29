@@ -22,7 +22,7 @@ class TasksController < ApplicationController
   end
 
   def set_board
-    @board = List.find(task_params[:list_id]).board
+    @board = List.find_by_id(task_params[:list_id]).board
   end
 
   def task_params 

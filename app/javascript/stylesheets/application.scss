@@ -128,3 +128,13 @@ body {
 #add_list_button:hover{
   opacity: 0.8;
 }
+
+.someclasse{
+  width: 20px;
+  fill: #ced4da;
+}
+.someclasse:hover{
+  cursor: pointer;
+  fill: #6c757d;
+  transition: 0.3s;
+}

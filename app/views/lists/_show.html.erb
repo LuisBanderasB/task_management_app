@@ -1,4 +1,19 @@
-<h4 class="mt-3 px-2"><%= list.name %></h4>
+<div class="d-flex justify-content-between align-items-center">
+  <h4 class="mt-3 px-2"><%= list.name %></h4>
+
+  <div class="dropdown">
+    <div data-bs-toggle="dropdown" aria-expanded="false">
+      <%= embedded_svg('ellipsis-solid', class:"someclasse") %>
+    </div>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+
+
+</div>
 <ul class="unorder_list mt-3 list list-group d-flex gap-2" style="min-height: 20px;" id="<%= list.id%>">
   <% list.tasks.each do |task| %>
     <li class="list-group-item rounded-1 border-0 shadow-sm" id=<%= task.id %>>
