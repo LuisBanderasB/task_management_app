@@ -8,10 +8,10 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "../stylesheets/application"
+import "jquery"
+import "bootstrap"
+import "dragula"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-require("jquery")
-require("bootstrap")
-require("dragula")

@@ -6,9 +6,10 @@
       <%= embedded_svg('ellipsis-solid', class:"someclasse") %>
     </div>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><a class="dropdown-item" href="#">Rename</a></li>
+      <li>
+        <%= link_to "Delete", list_path(list.id), class: "dropdown-item text-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+      </li>
     </ul>
 </div>
 
