@@ -1,4 +1,3 @@
-console.log("helou")
 $('#form_new_list').hide();
 
 $( "#add_list_button" ).click(function( event ) {
