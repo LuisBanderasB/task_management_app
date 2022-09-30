@@ -11,6 +11,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="box">
+      <div class="somerow header">
+        <%= render 'layouts/navigation' %>
+      </div>
+      <div class="somerow content">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </div>
+      <div class="somerow footer">
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
   </body>
 </html>
