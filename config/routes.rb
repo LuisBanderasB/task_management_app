@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_boards
   devise_for :users
   root 'welcome#index'
   resources :boards, only: [:index, :show, :create, :destroy, :update]
