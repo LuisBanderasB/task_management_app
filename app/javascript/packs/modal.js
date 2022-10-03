@@ -1,13 +1,23 @@
+import Rails from "@rails/ujs"
+
 const exampleModal = document.getElementById('modalContainer')
 exampleModal.addEventListener('show.bs.modal', event => {
-  // Button that triggered the modal
   const button = event.relatedTarget
-  // Extract info from data-bs-* attributes
   const recipient = button.getAttribute('data-bs-whatever')
-  // If necessary, you could initiate an AJAX request here
-  // and then do the updating in a callback.
-  //
-  // Update the modal's content.
+
+
+  Rails.ajax({
+    url: "/tasks",
+    type: "GET",
+    data: "",
+    success: function(data) { 
+      console.log("funciona")
+    },
+    error: function(data){
+      console.log(data)
+    }
+  })
+
   const modalTitle = exampleModal.querySelector('.modal-title')
   const modalBodyInput = exampleModal.querySelector('.modal-body input')
 
