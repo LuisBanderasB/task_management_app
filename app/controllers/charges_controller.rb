@@ -1,7 +1,5 @@
 class ChargesController < ApplicationController
-  def new
-  end
-  def create
+  def new; end
 
-  end
+  def create; end
 end

@@ -1,4 +1,4 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   config.action_mailer.perform_deliveries = true
@@ -6,11 +6,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name:      "tmanagementapp@gmail.com",
-    password:       "fahder-fYdnyf-8fonwu",
-    domain:         "localhost:3000",
-    address:       'smtp.gmail.com',
-    port:          587,
+    user_name: 'tmanagementapp@gmail.com',
+    password: 'fahder-fYdnyf-8fonwu',
+    domain: 'localhost:3000',
+    address: 'smtp.gmail.com',
+    port: 587,
     authentication: :plain,
     enable_starttls_auto: true
   }

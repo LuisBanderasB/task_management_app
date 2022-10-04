@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   def destroy
     @board = @list.board
     @list.destroy
-    flash[:notice] = "The list and its tasks were deleted"
+    flash[:notice] = 'The list and its tasks were deleted'
     redirect_to @board
   end
 
@@ -14,12 +14,13 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to @board
     else
-      flash[:danger] = "Something went wrong." 
+      flash[:danger] = 'Something went wrong.'
       redirect_to @board
     end
   end
 
-  private 
+  private
+
   def set_board
     @board = Board.find_by_id(list_params[:board_id])
   end
@@ -28,7 +29,7 @@ class ListsController < ApplicationController
     @list = List.find_by_id(params[:id])
   end
 
-  def list_params 
+  def list_params
     params.require(:list).permit(:name, :board_id)
   end
 end

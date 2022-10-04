@@ -5,21 +5,22 @@
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-      <form>
-        <div class="mb-3">
-          <label for="description" class="col-form-label">Description:</label>
-          <input type="text" class="form-control" id="description" value="<%=task.description%>">
-        </div>
-        <div class="mb-3">
-          <label for="message-text" class="col-form-label">Files:</label>
-          <textarea class="form-control" id="message-text"></textarea>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Send message</button>
-      <%= link_to 'Update', tasks_path, class: 'btn btn-success' %>
+      <%= form_with model: task, local: true do |f| %>
+        <form>
+          <div class="form-floating mb-3">
+            <%= f.text_field :title, class: "form-control"%>
+            <%= f.label :title %>
+          </div>
+          <div class="form-floating">
+            <%= f.text_field :description, class: "form-control" %>
+            <%= f.label :description %><br/> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <%= f.submit 'Update', class: "btn btn-primary" %> 
+          </div>
+        </form>
+      <% end %>
     </div>
   </div>
 </div>
