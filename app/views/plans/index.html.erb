@@ -13,8 +13,21 @@
               <p class="text-sm-start text-muted"><%=plan.description%></p>
             </div>
             <p><strong class="fs-1"><%=money_translate(plan)%></strong> per/month</p>
-            <button type="button" class="btn btn-primary w-100">Try 15 days for free</button>
-
+            <%= form_tag charges_path do %>
+              <article>
+                <% if flash[:error].present? %>
+                  <div id="error_explanation">
+                    <p><%= flash[:error] %></p>
+                  </div>
+                <% end %>
+              </article>
+            
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="<%= get_key() %>"
+                      data-description="A month's subscription"
+                      data-amount="<%=plan.price_cents%>"
+                      data-locale="auto"></script>
+            <% end %>
             <div class="mt-4">
               <p>Lite includes:</p>
               <ul class="plan-features-list">

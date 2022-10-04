@@ -3,6 +3,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[update update_list]
   before_action :set_board, only: [:create]
+  before_action :require_author, only: %i[update update_list]
 
   def create
     @task = Task.new(task_params)
@@ -20,15 +21,22 @@ class TasksController < ApplicationController
     @board = @list.board
     if @task.update(task_params_to_update)
       flash[:notice] = 'task was updated successfully.'
+      redirect_to @board
     else
-      flash[:danger] = 'Something went wrong'
+      flash[:danger] = 'Only authors can perform this action'
+      redirect_to @board
     end
-    redirect_to @board
+    
   end
 
   def update_list
     @task.list_id = params[:task][:list]
-    @task.save
+    if @task.save
+      flash[:notice] = "task was updated successfully."
+      redirect_to @task.list.board
+    else
+      flash[:notice] = "Only authors can perform that action."
+    end
   end
 
   private
@@ -47,5 +55,12 @@ class TasksController < ApplicationController
 
   def task_params_to_update
     params.require(:task).permit(:title, :list_id, :description)
+  end
+
+  def require_author
+    if current_user.id != @task.author && current_user.role != "admin"
+      flash[:alert] = "Just the author can perform that action."
+      redirect_to @task.list.board
+    end
   end
 end
