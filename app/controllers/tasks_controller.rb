@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:update]
+  before_action :set_task, only: [:update, :update_list]
   before_action :set_board, only: [:create]
 
   def create
@@ -12,9 +12,14 @@ class TasksController < ApplicationController
   end
 
   def update
+    
+  end
+
+  def update_list
     @task.list_id = params[:task][:list]
     @task.save
   end
+
 
   def show
    render partial: 'tasks/show'

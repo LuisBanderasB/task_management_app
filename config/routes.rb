@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  put '/tasks/:id' => 'tasks_update_list#update_list'
+  put '/tasks/:id' => 'tasks#update_list'
   resources :user_boards
   devise_for :users
   resources :plans, only: [:index]

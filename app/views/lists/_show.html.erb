@@ -15,7 +15,7 @@
 
 <ul class="unorder_list mt-3 list list-group d-flex gap-2" style="min-height: 20px;" id="<%= list.id%>">
   <% list.tasks.each do |task| %>
-    <li class="task-item list-group-item rounded-1 border-0 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalContainer<%=task.id%>">
+    <li class="task-item list-group-item rounded-1 border-0 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalContainer<%=task.id%>" id="<%=task.id%>">
       <%= task.title %>
     </li>
     <div class="modal fade" id="modalContainer<%=task.id%>" tabindex="-1" aria-hidden="true">

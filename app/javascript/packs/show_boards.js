@@ -18,7 +18,7 @@ require(["dragula"], function(dragula){
     var task_id = el.id;
     var list_id = target.id;
     $.ajax({
-      type: "PATCH",
+      type: "PUT",
       data: {
         authenticity_token: $('[name="csrf-token"]')[0].content, 
         task: {
