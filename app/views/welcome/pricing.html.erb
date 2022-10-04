@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <h1 class="text-center">Get started</h1>
+  <p class="text-center text-muted">Choose a plan tailored to your needs</p>
+  <div class="row justify-content-around">
+    <% @plans.each do |plan| %>
+      <div class="col mt-4">
+        <div class="card py-2 border-0 shadow rounded-4" style="height: 540px;">
+          <div class="card-body d-flex flex-column gap-4">
+            <div>
+              <h5 class="card-title fs-3">
+                <%=plan.name%>
+              </h5>
+              <p class="text-sm-start text-muted"><%=plan.description%></p>
+            </div>
+            <p><strong class="fs-1"><%=money_translate(plan)%></strong> per/month</p>
+            <button type="button" class="btn btn-primary w-100">Try 15 days for free</button>
+
+            <div class="mt-4">
+              <p>Lite includes:</p>
+              <ul class="plan-features-list">
+                <li class="plan-feature">50 accounts</li>
+                <li class="plan-feature">10 boards</li>
+                <li class="plan-feature">CMS integration</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <p class="card-text">
+              <small class="text-muted">
+                asasd
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>

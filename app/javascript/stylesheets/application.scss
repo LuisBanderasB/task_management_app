@@ -5,6 +5,12 @@ html,
 body {
   height: 100%;
   margin: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .box {
@@ -101,4 +107,38 @@ body {
 
 .gu-transit {
   opacity: 0.2;
+}
+
+
+.list-group-item:hover{
+  cursor: pointer;
+}
+
+.add:hover{
+  cursor: pointer;
+  background-color:rgba(128,128,128,0.1);
+  color: black;
+}
+
+
+#add_list_button{
+  opacity: 0.5;
+}
+
+#add_list_button:hover{
+  opacity: 0.8;
+}
+
+.someclasse{
+  width: 20px;
+  fill: #ced4da;
+}
+.someclasse:hover{
+  cursor: pointer;
+  fill: #6c757d;
+  transition: 0.3s;
+}
+
+.title{
+  margin-bottom: 56px;
 }

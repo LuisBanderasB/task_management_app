@@ -1,8 +1,8 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show]
+  before_action :set_board, only: [:show, :destroy, :update]
 
   def index
-    @boards = Board.all
+    @boards = current_user.boards
   end
 
   def show
@@ -10,14 +10,32 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = Board.new(board_params)
+    @board = current_user.boards.create(board_params)
     if @board.save
       flash[:notice] = "Board was created successfully." 
       redirect_to @board
     else
-      render 'index'
+      flash[:danger] = "You need a name with more than 6 characters." 
+      redirect_to boards_path
     end
   end
+
+  def update
+    if @board.update(board_params)
+      flash[:notice] = "Board was updated successfully."
+      redirect_to @board
+    else
+      flash[:danger] = "Board needs a name larger than 6 characters."
+      redirect_to @board
+    end
+  end
+
+  def destroy
+    @board.destroy
+    flash[:notice] = "Board was deleted succesfuly"
+    redirect_to boards_path
+  end
+
 
   private 
 

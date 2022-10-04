@@ -1,0 +1,27 @@
+<div class="col">
+  <div> 
+    <button class="bg-light rounded px-4 py-2 d-flex border-0" id="add_list_button" style="width: 18rem;">
+      Add a list
+    </button>
+  </div>
+
+  <div class="bg-light p-3 rounded" id="form_new_list" style="width: 18rem;">
+    <%= form_with scope: :list, url: lists_path, local: true do |f| %>
+      <form>
+        <div class="mb-2">
+          <%= f.text_field :name, placeholder: "Introduce a name for this list", class:"rounded-1 form-control h-16"%>
+        </div>
+        <div>
+          <%= f.text_field :board_id, type: "hidden", value: board.id %>
+        </div>
+        <%= f.submit 'submit', class: 'btn btn-primary rounded-1'%>
+        <a href="#" class='btn btn-close rounded-1' id="close_form">
+        </a>
+      </form>
+    <% end %>
+  </div>
+</div>
+
+<%= javascript_pack_tag "new_list" %> 
+
+

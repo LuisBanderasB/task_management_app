@@ -1,0 +1,38 @@
+<div class="container h-100 d-flex flex-column justify-content-center">
+
+    <h2 class="title text-center">Hello Again!</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="d-flex flex-column gap-4 align-items-center">
+        <div class="form-floating w-50">
+          <%= f.email_field :email, class: "form-control"%>
+          <%= f.label :email %>
+        </div>
+
+        <div class="form-floating w-50">
+          <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+          <%= f.label :password %>
+          <% if devise_mapping.rememberable? %>
+            <div class="d-flex justify-content-between">
+              <div class="field ">
+                <%= f.check_box :remember_me, class: "form-check-input"%>
+                <%= f.label :remember_me, class:"form-check-label" %>
+              </div>
+
+              <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="d-flex flex-column w-25 gap-2 mt-4">
+          <%= f.submit "Log in", class:"btn btn-primary border-0", style:"height: 50px;"%>
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <%= link_to "Sign up", new_registration_path(resource_name), class:"btn btn-primary bg-danger border-0", style:"height: 50px;"%><br />
+          <% end %>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    <% end %>
+
+</div>
