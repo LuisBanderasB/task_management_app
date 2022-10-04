@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_03_211804) do
+ActiveRecord::Schema.define(version: 2022_10_04_040539) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,25 @@ ActiveRecord::Schema.define(version: 2022_10_03_211804) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "board_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "plan_id"
+    t.integer "user_id"
+    t.integer "status", default: 0
+    t.string "token"
+    t.string "customer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "USD", null: false
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tasks", force: :cascade do |t|
