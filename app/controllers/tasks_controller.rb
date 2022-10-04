@@ -16,6 +16,10 @@ class TasksController < ApplicationController
     @task.save
   end
 
+  def show
+   render partial: 'tasks/show'
+  end
+
   private 
   def set_task
     @task = Task.find(params[:id])

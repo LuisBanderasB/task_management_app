@@ -15,9 +15,12 @@
 
 <ul class="unorder_list mt-3 list list-group d-flex gap-2" style="min-height: 20px;" id="<%= list.id%>">
   <% list.tasks.each do |task| %>
-    <li class="task-item list-group-item rounded-1 border-0 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalContainer" data-bs-whatever=<%=task.id%>>
+    <li class="task-item list-group-item rounded-1 border-0 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalContainer<%=task.id%>">
       <%= task.title %>
     </li>
+    <div class="modal fade" id="modalContainer<%=task.id%>" tabindex="-1" aria-hidden="true">
+      <%=render(:partial => "tasks/show", :locals => {:task => task})%>
+    </div>
   <% end %>
 </ul>
 
@@ -30,9 +33,3 @@
 <div class="hidden my-3" id="form_<%= list.id%>" style="display: none;">
   <%= render(:partial => "tasks/new", :locals => {:list => list})%>
 </div>
-
-<div class="modal fade" id="modalContainer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <%=render"tasks/show"%>
-</div>
-
-<%= javascript_pack_tag 'modal'%>
