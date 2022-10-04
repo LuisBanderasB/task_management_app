@@ -16,15 +16,17 @@
         </div>
       </div>
     <% end %>
-    <div class="add-board col mt-4">
-      <div class="card bg-secondary">
-        <div class="card-body text-white d-flex align-items-center justify-content-center">
-          <a href="#" class="text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#add-board-modal">
-            Add new board
-          </a>
+    <% if available_to_create_boards() %>
+      <div class="add-board col mt-4">
+        <div class="card bg-secondary">
+          <div class="card-body text-white d-flex align-items-center justify-content-center">
+            <a href="#" class="text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#add-board-modal">
+              Add new board
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 

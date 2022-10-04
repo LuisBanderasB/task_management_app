@@ -16,4 +16,12 @@ module ApplicationHelper
 
     raw doc
   end
+
+  def available_to_create_boards()
+    if current_user.role == 'manager'
+      return true
+    else
+      return false
+    end
+  end
 end
