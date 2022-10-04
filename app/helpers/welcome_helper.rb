@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module WelcomeHelper
   def money_translate(plan)
     price = Money.new(plan.price_cents)

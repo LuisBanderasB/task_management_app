@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
   before_action :set_task, only: %i[update update_list]
   before_action :set_board, only: [:create]
@@ -18,11 +20,10 @@ class TasksController < ApplicationController
     @board = @list.board
     if @task.update(task_params_to_update)
       flash[:notice] = 'task was updated successfully.'
-      redirect_to @board
     else
       flash[:danger] = 'Something went wrong'
-      redirect_to @board
     end
+    redirect_to @board
   end
 
   def update_list
@@ -37,7 +38,7 @@ class TasksController < ApplicationController
   end
 
   def set_board
-    @board = List.find_by_id(task_params[:list_id]).board
+    @board = List.find_by(id: task_params[:list_id]).board
   end
 
   def task_params

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BoardsController < ApplicationController
   before_action :set_board, only: %i[show destroy update]
 
@@ -23,11 +25,10 @@ class BoardsController < ApplicationController
   def update
     if @board.update(board_params)
       flash[:notice] = 'Board was updated successfully.'
-      redirect_to @board
     else
       flash[:danger] = 'Board needs a name larger than 6 characters.'
-      redirect_to @board
     end
+    redirect_to @board
   end
 
   def destroy
@@ -43,6 +44,6 @@ class BoardsController < ApplicationController
   end
 
   def set_board
-    @board = Board.find_by_id(params[:id])
+    @board = Board.find_by(id: params[:id])
   end
 end

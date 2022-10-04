@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -35,17 +37,17 @@ user4 = User.new(email: 'useradmin@example.com', password: 'adminpass', first_na
 user4.skip_confirmation!
 user4.save!
 
-manager = User.find_by_email('johndoe@example.com')
+manager = User.find_by(email: 'johndoe@example.com')
 
 manager.boards.create(name: 'Task Management App', visibility: 'public')
 manager.boards.create(name: 'ToDo App', visibility: 'public')
 manager.boards.create(name: 'Musirockstars', visibility: 'public')
 manager.boards.create(name: 'Photo_app', visibility: 'public')
 
-board1 = Board.find_by_name('Task Management App')
-board2 = Board.find_by_name('ToDo App')
-board3 = Board.find_by_name('Musirockstars')
-board4 = Board.find_by_name('Photo_app')
+board1 = Board.find_by(name: 'Task Management App')
+board2 = Board.find_by(name: 'ToDo App')
+board3 = Board.find_by(name: 'Musirockstars')
+board4 = Board.find_by(name: 'Photo_app')
 
 board1.lists.create(name: 'To Do')
 board1.lists.create(name: 'Doing')
