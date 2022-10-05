@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   before_action :set_board, only: %i[show destroy update]
 
   def index
-    @boards = current_user.boards
+    @boards = current_user.workspaces.first.boards
   end
 
   def show
@@ -12,7 +12,7 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = current_user.boards.create(board_params)
+    @board = current_user.workspaces.first.boards.create(board_params)
     if @board.save
       flash[:notice] = 'Board was created successfully.'
       redirect_to @board

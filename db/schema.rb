@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_04_192352) do
+ActiveRecord::Schema.define(version: 2022_10_05_021537) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name"
     t.string "visibility"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "workspace_id"
+    t.index ["workspace_id"], name: "index_boards_on_workspace_id"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -47,13 +49,13 @@ ActiveRecord::Schema.define(version: 2022_10_04_192352) do
     t.integer "author"
   end
 
-  create_table "user_boards", force: :cascade do |t|
+  create_table "user_workspaces", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "board_id", null: false
+    t.integer "workspace_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["board_id"], name: "index_user_boards_on_board_id"
-    t.index ["user_id"], name: "index_user_boards_on_user_id"
+    t.index ["user_id"], name: "index_user_workspaces_on_user_id"
+    t.index ["workspace_id"], name: "index_user_workspaces_on_workspace_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,6 +77,18 @@ ActiveRecord::Schema.define(version: 2022_10_04_192352) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "user_boards", "boards"
-  add_foreign_key "user_boards", "users"
+  create_table "workspaces", force: :cascade do |t|
+    t.string "name"
+    t.integer "plan_id"
+    t.integer "manager_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["manager_id"], name: "index_workspaces_on_manager_id"
+    t.index ["plan_id"], name: "index_workspaces_on_plan_id"
+  end
+
+  add_foreign_key "user_workspaces", "users"
+  add_foreign_key "user_workspaces", "workspaces"
+  add_foreign_key "workspaces", "plans"
+  add_foreign_key "workspaces", "users", column: "manager_id"
 end

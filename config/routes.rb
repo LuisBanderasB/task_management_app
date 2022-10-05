@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :user_workspaces
   root 'welcome#index'
   put '/tasks/:id' => 'tasks#update_list'
-  resources :user_boards
   devise_for :users
   resources :plans, only: [:index]
   resources :boards, only: %i[index show create destroy update]

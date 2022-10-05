@@ -7,19 +7,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-UserBoard.delete_all
+UserWorkspace.delete_all
+Workspace.delete_all
 Board.delete_all
 User.delete_all
 List.delete_all
 Plan.delete_all
 
-plans = Plan.create([
-                      { name: 'Lite', price_cents: 200, price_currency: 'USD', description: 'Perfect for small teams' },
-                      { name: 'Pro', price_cents: 200, price_currency: 'USD',
-                        description: 'The best option for a company' },
-                      { name: 'Ultimate', price_cents: 200, price_currency: 'USD', description: 'You wont have limits' }
-                    ])
+#---------- PLANS ----------
+lite = Plan.create(name: 'Lite', price_cents: 200, price_currency: 'USD',
+                   description: 'Perfect for small teams')
+pro = Plan.create(name: 'Pro', price_cents: 200, price_currency: 'USD',
+                   description: 'The best option for a company')
+ultimate = Plan.create(name: 'Ultimate', price_cents: 200, price_currency: 'USD',
+                   description: 'You wont have limits')  
 
+
+#---------- USERS ----------
 user1 = User.new(email: 'johndoe@example.com', password: 'doepass', first_name: 'John', last_name: 'Doe',
                  role: 'manager')
 user1.skip_confirmation!
@@ -38,11 +42,15 @@ user4.skip_confirmation!
 user4.save!
 
 manager = User.find_by(email: 'johndoe@example.com')
+plan = Plan.find_by(name: 'Lite')
 
-manager.boards.create(name: 'Task Management App', visibility: 'public')
-manager.boards.create(name: 'ToDo App', visibility: 'public')
-manager.boards.create(name: 'Musirockstars', visibility: 'public')
-manager.boards.create(name: 'Photo_app', visibility: 'public')
+#---------- WORKSPACES ----------
+workspace = Workspace.create(name:'John Workspace', plan_id: plan.id, manager_id: manager.id)
+
+workspace.boards.create(name: 'Task Management App', visibility: 'public')
+workspace.boards.create(name: 'ToDo App', visibility: 'public')
+workspace.boards.create(name: 'Musirockstars', visibility: 'public')
+workspace.boards.create(name: 'Photo_app', visibility: 'public')
 
 board1 = Board.find_by(name: 'Task Management App')
 board2 = Board.find_by(name: 'ToDo App')
@@ -57,3 +65,7 @@ board3.lists.create(name: 'To Do')
 board3.lists.create(name: 'Doing')
 board4.lists.create(name: 'To Do')
 board4.lists.create(name: 'Doing')
+
+workspace.user_workspaces.create(user_id: user1.id)
+workspace.user_workspaces.create(user_id: user2.id)
+workspace.user_workspaces.create(user_id: user3.id)
