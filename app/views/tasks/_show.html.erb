@@ -1,26 +1,36 @@
 <div class="modal-dialog">
   <div class="modal-content ">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel"><%=task.title%></h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-      <%= form_with model: task, local: true do |f| %>
-        <form>
-          <div class="form-floating mb-3">
-            <%= f.text_field :title, class: "form-control"%>
-            <%= f.label :title %>
+    <%= form_with model: task, local: true do |f| %>
+      <form>
+        <div class="modal-header">
+          <%= f.text_field :title, class: "form-control border-0", id: 'title_text_field'%>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">created by: <strong><%= get_creator(task)%></strong></label>
           </div>
-          <div class="form-floating">
-            <%= f.text_field :description, class: "form-control" %>
-            <%= f.label :description %><br/> 
+          <div class="mb-3">
+            <%= f.label :description, class: "form-label", rows:"1", cols:"50"%><br/> 
+            <%= f.text_area :description, class: "form-control border-0", id:'description_text_area', placeholder: "Add a detailed description"%>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <%= f.submit 'Update', class: "btn btn-primary" %> 
+          <div class="mb-3">
+            <label for="exampleDataList" class="form-label">Users</label>
+            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type the email to search">
+            <datalist id="datalistOptions">
+              <%= task_users(task).each do |user| %> 
+                <option value="<%= user.email %>">
+              <% end %>
+            </datalist>
           </div>
-        </form>
-      <% end %>
-    </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <%= f.submit 'Update', class: "btn btn-primary" %> 
+        </div>
+      </form>
+    <% end %>
   </div>
 </div>
+
+<%= javascript_pack_tag 'show_modal' %>

@@ -19,11 +19,11 @@ class TasksController < ApplicationController
   def update
     @list = @task.list
     @board = @list.board
-    if @task.update(task_params_to_update)
+    if @task.update(task_params)
       flash[:notice] = 'task was updated successfully.'
       redirect_to @board
     else
-      flash[:danger] = 'Only authors can perform this action'
+      flash[:danger] = 'Only authors can perform this actionsita'
       redirect_to @board
     end
     
@@ -50,10 +50,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :list_id)
-  end
-
-  def task_params_to_update
     params.require(:task).permit(:title, :list_id, :description)
   end
 
