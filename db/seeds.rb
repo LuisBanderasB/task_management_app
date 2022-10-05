@@ -28,10 +28,11 @@ user2 = User.new(email: 'luisbanderas@example.com', password: 'luispass', first_
                  role: 'regular')
 user2.skip_confirmation!
 user2.save!
-user3 = User.new(email: 'userregular@example.com', password: 'regularpass', first_name: 'User', last_name: 'Regular')
+user3 = User.new(email: 'userregular@example.com', password: 'regularpass', first_name: 'Jane', last_name: 'Smith',
+                 role: 'regular')
 user3.skip_confirmation!
 user3.save!
-user4 = User.new(email: 'useradmin@example.com', password: 'adminpass', first_name: 'User', last_name: 'Admin',
+user4 = User.new(email: 'useradmin@example.com', password: 'adminpass', first_name: 'Jazmin', last_name: 'Riveroll',
                  role: 'admin')
 user4.skip_confirmation!
 user4.save!
