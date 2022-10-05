@@ -19,7 +19,7 @@
             <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type the email to search">
             <datalist id="datalistOptions">
               <%= task_users(task).each do |user| %> 
-                <option value="<%= user.email %>">
+                <option value="<%=user.email%>">
               <% end %>
             </datalist>
           </div>
@@ -32,5 +32,3 @@
     <% end %>
   </div>
 </div>
-
-<%= javascript_pack_tag 'show_modal' %>
