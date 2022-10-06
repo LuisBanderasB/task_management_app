@@ -24,4 +24,12 @@ module ApplicationHelper
       return false
     end
   end
+
+  def complete_name(user)
+    complete = "#{user.first_name} #{user.last_name}"
+  end
+
+  def format_date(date)
+    date.strftime("%F")
+  end
 end

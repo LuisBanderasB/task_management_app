@@ -5,7 +5,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :user_workspaces
   has_many :workspaces, through: :user_workspaces
-  has_many :books, through: :book_groups   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable

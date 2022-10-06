@@ -1,0 +1,44 @@
+<div style="position:relative;">
+  <div class="w-100" style="position:absolute; height:60vh; background:white;">
+  </div>
+</div>
+
+<div class="container">
+  <div class="d-flex align-items-center gap-5" style="position:relative; top:50px;">
+    <div>
+      <h3 class="m-0">Workspace Members</h1>
+      <p class="m-0 text-muted" style="padding-left:5px;">Manage your team members here</p>
+    </div>
+    <div>
+      <button type="button" class="btn btn-outline-dark d-flex gap-3">
+        <%= embedded_svg('plus-solid', class:"someclasse") %>
+        Add workspace member
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <table class="table w-50" style="position:fixed; top:185px;">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">email</th>
+          <th scope="col">Date added</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%=@users.each do |user| %>
+          <tr>
+            <td><%=complete_name(user)%></td>
+            <td><%=user.email%></td>
+            <td><%=format_date(user.created_at)%></td>
+            <td>
+              <%= embedded_svg('trash-can', class:"someclasse") %>
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>

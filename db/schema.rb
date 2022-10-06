@@ -90,5 +90,4 @@ ActiveRecord::Schema.define(version: 2022_10_05_021537) do
   add_foreign_key "user_workspaces", "users"
   add_foreign_key "user_workspaces", "workspaces"
   add_foreign_key "workspaces", "plans"
-  add_foreign_key "workspaces", "users", column: "manager_id"
 end

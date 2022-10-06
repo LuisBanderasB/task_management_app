@@ -3,7 +3,7 @@ class CreateWorkspace < ActiveRecord::Migration[6.1]
     create_table :workspaces do |t|
       t.string :name
       t.references :plan, index: true, foreign_key: true
-      t.references :manager, index: true, foreign_key: { to_table: :users }
+      t.integer :manager_id, index: true
 
       t.timestamps
     end
