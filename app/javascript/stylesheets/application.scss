@@ -129,20 +129,31 @@ body {
   opacity: 0.8;
 }
 
-.someclasse{
+.svg-icon{
   width: 20px;
   fill: #ced4da;
 }
-.someclasse:hover{
+.svg-icon:hover{
   cursor: pointer;
   fill: #6c757d;
   transition: 0.3s;
 }
 
+.svg-add-icon{
+  width: 16px;
+  fill: #484848;
+}
+
+.btn:hover{
+  .svg-add-icon{
+    width: 16px;
+    fill: #ffffff;
+  }
+}
+
 .title{
   margin-bottom: 56px;
 }
-
 
 // Styles for modal to show tasks
 #title_text_field{
