@@ -15,6 +15,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def invite
+    email = params[:users][:email]
+    if user = User.invite!({:email => email}, current_user)
+      current_workspace.users << user
+      flash[:notice] = 'User invited successfully.'
+      redirect_to users_path
+    else
+      flash[:danger] = 'Something went wrong.'
+      redirect_to users_path
+    end
+  end
+
   private
   def set_user
     @user = User.find(params[:id])

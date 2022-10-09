@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :user_workspaces
   root 'welcome#index'
   put '/tasks/:id' => 'tasks#update_list'
+  match "/invite_user" => "users#invite", :via => :post, :as => :invite_user
   devise_for :users
   resources :users, only: %i[index, destroy]
   resources :plans, only: [:index]

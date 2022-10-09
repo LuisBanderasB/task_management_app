@@ -23,7 +23,8 @@
         <tr>
           <th scope="col">Name</th>
           <th scope="col">email</th>
-          <th scope="col">Date added</th>
+          <th scope="col">Invitation status</th>
+          <th scope="col">Date invited</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -32,6 +33,11 @@
           <tr>
             <td><%=complete_name(user)%></td>
             <td><%=user.email%></td>
+            <% if user == current_user %>
+              <td>-</td>
+            <% else %>
+              <td><%=user.invitation_accepted?%></td>
+            <% end %>
             <td><%=format_date(user.created_at)%></td>
             <td>
               <%= link_to user_path(user), method: :delete, data: {confirm: "Are you sure?"} do %>
