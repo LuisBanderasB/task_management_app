@@ -19,12 +19,15 @@ class TasksController < ApplicationController
   def update
     @list = @task.list
     @board = @list.board
-
     if @task.update(task_params)
       if params[:task][:files].present?
         params[:task][:files].each do |file|
           @task.files.attach(file)
         end
+      end
+      if params[:task][:assigned]
+        user_to_assign = User.find_by(email: params[:task][:assigned])
+        @task.users << user_to_assign
       end
       flash[:notice] = 'task was updated successfully.'
       redirect_to @board

@@ -9,20 +9,18 @@
         <li class="nav-item">
           <%= link_to 'Home', root_path, class: "nav-link"%>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Pricing', plans_path, class: "nav-link"%>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent">
-            Plans
-          </a>
-        </li>
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to 'Boards', boards_path, class: "nav-link"%>
           </li>
+          <% if current_user.role == "manager" %>
+            <li class="nav-item">
+              <%= link_to 'Members', users_path, class: "nav-link"%>
+            </li>
+          <%end%>
+        <%else%>
           <li class="nav-item">
-            <%= link_to 'Members', users_path, class: "nav-link"%>
+            <%= link_to 'Pricing', plans_path, class: "nav-link"%>
           </li>
         <% end %>
 
@@ -42,9 +40,3 @@
     </div>
   </div>
 </nav>
-<div class="collapse" id="navbarToggleExternalContent">
-  <div class="bg-dark p-4">
-    <h5 class="text-white h4">Collapsed content</h5>
-    <span class="text-muted">Toggleable via the navbar brand.</span>
-  </div>
-</div>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :tasks_users
+  resources :tasks_users, only: [:create]
   resources :user_workspaces
   root 'welcome#index'
   put '/tasks/:id' => 'tasks#update_list'

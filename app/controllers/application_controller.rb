@@ -6,4 +6,5 @@ class ApplicationController < ActionController::Base
   def current_workspace
     @workspace = current_user.workspaces.first
   end 
+
 end
