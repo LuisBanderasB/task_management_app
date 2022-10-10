@@ -4,6 +4,6 @@ class ChargesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def create
-    byebug
+    redirect_to new_user_registration_path
   end
 end

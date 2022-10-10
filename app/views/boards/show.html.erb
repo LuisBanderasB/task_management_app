@@ -1,9 +1,11 @@
 <div class="container mt-5">
   <div class="d-flex flex-direction-column gap-4">
     <h2><%= @board.name %></h2>
-    <button type="button" class="btn btn-warning rounded-1 dropdown-toggle" style="height: 36px;" data-bs-toggle="dropdown" aria-expanded="false">
-      Config
-    </button>
+    <% if current_user.role == "manager" %>
+      <button type="button" class="btn btn-warning rounded-1 dropdown-toggle" style="height: 36px;" data-bs-toggle="dropdown" aria-expanded="false">
+        Config
+      </button>
+    <%end%>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit-board-modal">Edit board</a></li>
       <li>

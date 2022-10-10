@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @users = @workspace.users
   end
 
+  def create
+    byebug
+  end
+
   def destroy
     if @user.destroy
       flash[:notice] = 'User deleted successfully.'

@@ -42,7 +42,16 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="exampleDataList" class="form-label">Users</label>
+            <div class="d-flex flex-column">
+              <label for="exampleDataList" class="form-label">Assigned to</label>
+              <table class="table w-50">
+                <tbody>
+                  <%task.users.each do |user|%>
+                    <td><%=user.email%></td>
+                  <%end%>
+                </tbody>
+              </table>
+            </div>
             <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type the email to search">
             <datalist id="datalistOptions">
               <%= task_users(task).each do |user| %> 
