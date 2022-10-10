@@ -19,14 +19,19 @@ class TasksController < ApplicationController
   def update
     @list = @task.list
     @board = @list.board
+
     if @task.update(task_params)
+      if params[:task][:files].present?
+        params[:task][:files].each do |file|
+          @task.files.attach(file)
+        end
+      end
       flash[:notice] = 'task was updated successfully.'
       redirect_to @board
     else
       flash[:danger] = 'Only authors can perform this actionsita'
       redirect_to @board
     end
-    
   end
 
   def update_list

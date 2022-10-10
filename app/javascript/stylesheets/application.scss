@@ -182,3 +182,14 @@ body {
 #description_text_area::-webkit-scrollbar{
   width: 0px;
 }
+
+.pdf-icon{
+  width: 50px;
+}
+
+.file-upload > input{
+  display: none;
+}
+.file-upload > label{
+  cursor: pointer;
+}

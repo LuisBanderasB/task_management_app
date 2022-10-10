@@ -15,6 +15,33 @@
             <%= f.text_area :description, class: "form-control border-0", id:'description_text_area', placeholder: "Add a detailed description"%>
           </div>
           <div class="mb-3">
+            <label>Images</label>
+            <div class="mb-3 d-flex gap-2">
+              <%get_image_files(task.files).each do |file| %>
+                  <%= image_tag file, class:"w-25"%>
+              <%end%>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label>Files</label>
+            <div class="mb-3 d-flex gap-2">
+              <%get_text_files(task.files).each do |file| %>
+                  <%= image_tag "pdf.png", class:"pdf-icon"%>
+              <%end%>
+            </div>
+          </div>
+          <div class="mb-2">
+            <div class="file-upload">
+              <label for="file-input">
+                <div class="d-flex align-items-center gap-2">
+                  <%= embedded_svg('paperclip', class:"svg-icon") %>
+                  <p class="m-0">upload file</p>
+                </div>
+              </label>
+              <%= f.file_field :files, id:"file-input", multiple: true%>
+            </div>
+          </div>
+          <div class="mb-3">
             <label for="exampleDataList" class="form-label">Users</label>
             <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type the email to search">
             <datalist id="datalistOptions">
