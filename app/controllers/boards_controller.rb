@@ -6,10 +6,14 @@ class BoardsController < ApplicationController
   end
 
   def show
+    # presenter declaration should be
+    # at the first line of the view
     @lists = BoardPresenter.new(@board).lists
   end
 
   def create
+    # remember creates does the saving for you
+    # already, you'd need to use .new
     @board = current_user.boards.create(board_params)
     if @board.save
       flash[:notice] = "Board was created successfully." 

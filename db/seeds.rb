@@ -12,6 +12,7 @@ User.delete_all
 List.delete_all
 Plan.delete_all
 
+# seeds should have been done with Faker
 plans = Plan.create([
   {name: 'Lite', price_cents: 200, price_currency: 'USD', description: 'Perfect for small teams'},
   {name: 'Pro', price_cents: 200, price_currency: 'USD', description: 'The best option for a company'},
