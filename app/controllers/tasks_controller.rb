@@ -25,7 +25,7 @@ class TasksController < ApplicationController
           @task.files.attach(file)
         end
       end
-      if params[:task][:assigned]
+      if params[:task][:assigned].present?
         user_to_assign = User.find_by(email: params[:task][:assigned])
         @task.users << user_to_assign
       end
